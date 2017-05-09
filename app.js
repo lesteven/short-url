@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
-var url = 'mongodb://localhost:27017/links';
+var config = require('./config');
+var url = 'mongodb://'+config.db.host +'/'+config.db.name;
 var mongoose = require('mongoose');
 mongoose.connect(url);
 var db = mongoose.connection;

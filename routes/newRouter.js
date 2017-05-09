@@ -23,6 +23,8 @@ newRouter.route('/:url(*)')
 	//generate then query database, if present
 	//generate new until not in database
 	var num = generate();
+	var newNum = checkLink(num);
+	newNum===undefined? num=num:num=newNum;
 	var shortUrl = req.protocol +'://'+ req.headers.host 
 					+'/'+ num;
 	var check = checkParam(originUrl);
@@ -71,5 +73,15 @@ function checkParam(url){
 	}
 }
 
-
+function checkLink(num){
+	Links.findOne({param:num},function(err,link){
+		if(link !== null){
+			num = generate()
+			checkLink(num);
+		}
+		else{
+			return num
+		}
+	})
+}
 module.exports = newRouter;
