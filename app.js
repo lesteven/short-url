@@ -1,6 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
-var config = require('./config');
+//var config = require('./config');
 var url = 'mongodb://'+config.db.host +'/'+config.db.name;
 var mongoose = require('mongoose');
 mongoose.connect(url);
