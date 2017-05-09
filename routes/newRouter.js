@@ -27,7 +27,15 @@ newRouter.route('/:url(*)')
 					+'/'+ num;
 	var check = checkParam(originUrl);
 	if(check){
-
+		var urlDoc = {
+			"url": originUrl,
+			"param": num
+		}
+		Links.collection.insert(urlDoc,function(err,link){
+			if(err) throw err;
+			console.log('link created',link);
+			var id = link._id;
+		})
 		res.json({
 			"original-url": originUrl,
 			"short-url": shortUrl
@@ -62,5 +70,6 @@ function checkParam(url){
 		return false;
 	}
 }
+
 
 module.exports = newRouter;
