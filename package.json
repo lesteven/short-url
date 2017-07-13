@@ -1,6 +1,9 @@
 {
   "name": "short-url",
   "version": "1.0.0",
+    "engines": {
+    "node": "6.11.1"
+  },
   "description": "URL shortener API",
   "main": "app.js",
   "scripts": {
